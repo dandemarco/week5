@@ -230,13 +230,57 @@ let nobel_prize_winners_2017 = {
 let prizeList = nobel_prize_winners_2017["prizes"]
 let literatureSection = prizeList[3]
 let literatureLaureates = literatureSection["laureates"]
-console.log(literatureLaureates)
-let firstname = literatureLaureates["firstname"]
-let surname = literatureLaureates["surname"]
-console.log
+
+for (let i = 0; i < literatureLaureates.length; i++) {
+  let laureateStats = literatureLaureates[i]
+  let firstname = laureateStats["firstname"]
+  let surname = laureateStats["surname"]
+  let fullName = `${firstname} ${surname}`
+  console.log(fullName)
+}
 
 // TODO print the ids of each of the Physics Nobel laureates. Your code should still work without modification if a laureate was added, or removed.
+let physicsSection = prizeList[0]
+let physicsLaureates = physicsSection["laureates"]
+
+for (let i = 0; i < physicsLaureates.length; i++) {
+  let physicsStats = physicsLaureates[i]
+  let physicsIDs = physicsStats["id"]
+  console.log(physicsIDs)
+}
+
 // TODO write code to print the names of all of the prize categories (So your output would start physics, chemistry, medicine... ).
+for (let i = 0; i < prizeList.length; i++) {
+  let prizeStats = prizeList[i]
+  let category = prizeStats["category"]
+  console.log(category)
+}
+
 // TODO write code to print the total number of prize categories
+for (let i = 0; i < prizeList.length; i++) {
+  let prizeStats = prizeList[i]
+  let category = prizeStats["category"]
+  let numberOfCategories = category.length 
+  console.log(`${category}: ${numberOfCategories}`)
+}
+
 // TODO write code to count the total number of laureates from 2017. 
+let numberList = []
+for (let i = 0; i < prizeList.length; i++) {
+  let prizeStats = prizeList[i]
+  let laureates = prizeStats["laureates"]
+  let numberofLaureates = laureates.length
+  numberList.push(numberofLaureates)
+  }
+
+//I stole this solution from: https://www.delftstack.com/howto/javascript/javascript-sum-of-array/
+let TotalLaureates = 0
+for (let i = 0; i < numberList.length; i++) {
+    TotalLaureates += numberList[i]
+}
+console.log(TotalLaureates)
+
+
+
+
 //   have a good look at how the JSON is structured, and think about what loop(s) you'll need to write.
